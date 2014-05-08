@@ -6,7 +6,13 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.sameInstance;
 import static org.hamcrest.CoreMatchers.startsWith;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 import static org.junit.matchers.JUnitMatchers.both;
 import static org.junit.matchers.JUnitMatchers.containsString;
 import static org.junit.matchers.JUnitMatchers.everyItem;
@@ -22,13 +28,13 @@ public class AssertTest {
 	public void testAssertArrayEquals() {
 		byte[] expected = "trial".getBytes();
 		byte[] actual = "trial".getBytes();
-		org.junit.Assert.assertArrayEquals("failure - byte arrays not same",
+		assertArrayEquals("failure - byte arrays not same",
 				expected, actual);
 	}
 
 	@Test
 	public void testAssertEquals() {
-		org.junit.Assert.assertEquals("failure - strings are not equal",
+		assertEquals("failure - strings are not equal",
 				"text", "text");
 	}
 
@@ -44,37 +50,37 @@ public class AssertTest {
 
 	@Test
 	public void testAssertNotSame() {
-		org.junit.Assert.assertNotSame("should not be same Object",
+		assertNotSame("should not be same Object",
 				new Object(), new Object());
 	}
 
 	@Test
 	public void testAssertNull() {
-		org.junit.Assert.assertNull("should be null", null);
+		assertNull("should be null", null);
 	}
 
 	@Test
 	public void testAssertSame() {
 		Integer aNumber = Integer.valueOf(768);
-		org.junit.Assert.assertSame("should be same", aNumber, aNumber);
+		assertSame("should be same", aNumber, aNumber);
 	}
 
 	// JUnit Matchers assertThat
 	@Test
 	public void testAssertThatBothContainsString() {
-		org.junit.Assert.assertThat("albumen",
+		assertThat("albumen",
 				both(containsString("a")).and(containsString("b")));
 	}
 
 	@Test
 	public void testAssertThathasItemsContainsString() {
-		org.junit.Assert.assertThat(Arrays.asList("one", "two", "three"),
+		assertThat(Arrays.asList("one", "two", "three"),
 				hasItems("one", "three"));
 	}
 
 	@Test
 	public void testAssertThatEveryItemContainsString() {
-		org.junit.Assert.assertThat(
+		assertThat(
 				Arrays.asList(new String[] { "fun", "ban", "net" }),
 				everyItem(containsString("n")));
 	}
@@ -94,6 +100,6 @@ public class AssertTest {
 
 	@Test
 	public void testAssertTrue() {
-		org.junit.Assert.assertTrue("failure - should be true", true);
+		assertTrue("failure - should be true", true);
 	}
 }

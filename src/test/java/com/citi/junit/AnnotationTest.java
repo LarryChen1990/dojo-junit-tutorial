@@ -2,6 +2,7 @@ package com.citi.junit;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeThat;
 
 import org.junit.After;
@@ -60,6 +61,7 @@ public class AnnotationTest {
 	@Test
 	public void testMethod() {
 		assertEquals("testMethod", testname.getMethodName());
+		
 		System.out.println("testMethod");
 	}
 
@@ -68,7 +70,7 @@ public class AnnotationTest {
 	@Theory
 	public void testDataPoint(String interests) {
 		// interests必须是I lvoe JUnit!，否则跳过该测试函数。
-		// interests must be I lvoe JUnit!, or skip the test function.
+		// interests must be I love JUnit!, or skip the test function.
 		assumeThat(interests, is("I love JUnit!"));
 		assertEquals("testDataPoint", testname.getMethodName());
 		System.out.println("testDataPoint" + "\n" + dPoint);
@@ -76,7 +78,7 @@ public class AnnotationTest {
 
 	// 测试@Ignore批注
 	// test the @Ignore annotation
-	@Ignore
+	@Ignore("Ignore test")
 	@Test
 	public void testIgnore() {
 		assertEquals("testIgnore", testname.getMethodName());
